@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @Thirapi
 <p align="center" width="100%">
-  <img width="100%" src="https://tenor.com/bQ39V.gif" alt="BTR Ryo Yamada">
+  <img width="100%" src="https://media.tenor.com/yaqXpa8fqb8AAAAC/minecraft.gif" alt="BTR Ryo Yamada">
 </p>
 
 <!---
