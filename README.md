@@ -2,7 +2,7 @@
 <p align="center" width="100%">
   <img width="300px" src="https://media.tenor.com/UnrUzRgwzncAAAAd/pepe-meme.gif" alt="BTR Ryo Yamada">
 </p>
-ngoding teorosss jago kaga, amatiran hamdal. d:
+<p>ngoding teorosss jago kaga, amatiran hamdal. d:</p>
 
 <!---
 Thirapi/Thirapi is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
