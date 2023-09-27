@@ -1,7 +1,8 @@
-- 👋 Hi, I’m @Thirapi
+- 👋 Hi, ini thirapi
 <p align="center" width="100%">
   <img width="300px" src="https://media.tenor.com/UnrUzRgwzncAAAAd/pepe-meme.gif" alt="BTR Ryo Yamada">
 </p>
+ngoding teorosss jago kaga, amatiran hamdal. d:
 
 <!---
 Thirapi/Thirapi is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
