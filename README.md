@@ -1,4 +1,4 @@
-- 👋 Hi, ini thirapi
+👋 Hi, ini thirapi
 <p align="center" width="100%">
   <img width="300px" src="https://media.tenor.com/UnrUzRgwzncAAAAd/pepe-meme.gif" alt="BTR Ryo Yamada">
 </p>
