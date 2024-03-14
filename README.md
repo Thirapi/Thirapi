@@ -1,9 +1,3 @@
-👋 Hi, ini thirapi
-<p align="center" width="100%">
-  <img width="300px" src="https://media.tenor.com/UnrUzRgwzncAAAAd/pepe-meme.gif" alt="BTR Ryo Yamada">
-</p>
-<p>ngoding teorosss jago kaga,</p>
-
 # Hey, Ini Booth GitHub Saya! 🚀
 
 Halo dunia! Selamat datang di booth GitHub sederhana saya! Saya seorang pelajar yang suka coding dan bereksperimen dengan teknologi. Yuk, mampir sebentar dan lihat-lihat karya-karya saya!
@@ -35,3 +29,5 @@ Mau kenalan atau sekadar ngobrol tentang coding? Sini, sini! Jangan malu-malu, s
 ![Statistik GitHub](https://github-readme-stats.vercel.app/api?username=thirapi&show_icons=true&theme=default)
 
 Makasih udah mampir ke booth saya! Semoga bisa nyaman dan ketemu hal seru di sini. 🌈✨
+<img width="300px" src="https://media.tenor.com/UnrUzRgwzncAAAAd/pepe-meme.gif" alt="BTR Ryo Yamada">
+
