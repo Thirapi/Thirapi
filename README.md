@@ -1,4 +1,4 @@
-[<img align="left" height="150px" width="150px" src="[https://media.tenor.com/UnrUzRgwzncAAAAd/pepe-meme.gif](https://media.tenor.com/UnrUzRgwzncAAAAd/pepe-meme.gif)">](https://pixeljeff1995.artstation.com/)
+[<img align="left" height="150px" width="150px" src="https://media.tenor.com/UnrUzRgwzncAAAAd/pepe-meme.gif">](https://pixeljeff1995.artstation.com/)
 
 ## Howdy <img height="16px" width="16px" src="https://github.com/mhxion/mhxion/raw/main/assets/hello.png" />
 
