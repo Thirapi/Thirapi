@@ -1,5 +1,5 @@
 <h3>@faiqthirapi</h3>
-I'm either sleeping, daydreaming, or trying to make sense of what's really going on while lying on a thin mattress to sink into dreamland. <br />
+I'm either sleeping, daydreaming, or trying to make sense of what's really going on, while lying on a thin mattress to sink into dreamland. <br />
 visit me bro <a href="https://x.com/faiqthirapi"><image src="https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white" /></a>
 <hr />
 
