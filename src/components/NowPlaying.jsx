@@ -87,48 +87,6 @@ const NowPlaying = (props) => {
         </div>
       )}
       </div>
-      <svg height="150" xmlns="http://www.w3.org/2000/svg" style={{ minWidth: '380px' }}>
-      {track ? (
-        <>
-          {/* Gambar Album */}
-          <image 
-            href={track.album.images[0].url} 
-            x="10" 
-            y="10" 
-            width="80" 
-            height="80" 
-            alt={track.name} 
-          />
-
-          {/* Nama Track */}
-          <text x="100" y="30" fontSize="16" fontWeight="bold" fill="white">{track.name}</text>
-
-          {/* Nama Artis */}
-          <text x="100" y="55" fontSize="12" fill="white">
-            {track.artists.map(artist => artist.name).join(', ')}
-          </text>
-
-          {/* Album Name */}
-          <text x="100" y="80" fontSize="12" fill="white">{track.album.name}</text>
-
-          {/* Progress Bar */}
-          <rect x="10" y="100" width="300" height="4" fill="gray" />
-          <rect
-            x="10"
-            y="100"
-            width={`${calculateProgress()}%`}
-            height="4"
-            fill="green"
-            style={{ maxWidth: '300' }}
-          />
-
-          {/* Progress Time */}
-          <text x="80" y="130" fontSize="12" fill="white">{formatTime(progress)} / {formatTime(duration)}</text>
-        </>
-      ) : (
-        <text x="10" y="30" fontSize="16" fill="white">No track is currently playing</text>
-      )}
-     </svg>
     </>
   );
 };
