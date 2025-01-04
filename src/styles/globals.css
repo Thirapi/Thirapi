@@ -19,3 +19,100 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* .now-playing-container {
+  box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.76);
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.76);
+  -moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.76);
+  background-color: #2e2f34;
+  border-radius: 10px;
+  padding: 0 30px 10px 30px;
+  width: 100%; 
+  max-width: 340px;
+  font-family: Arial, sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto; 
+} */
+
+.now-playing h4 {
+  color: #a9a9a9;
+  font-size: 12px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.now-playing .spotify-logo {
+  font-size: 16px;
+  margin-left: 5px;
+  color: #1db954;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px; /* Give space before the progress bar */
+}
+
+.album-art {
+  height: 64px;
+  width: 64px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.track-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.track-details h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.track-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+/* Container for progress bar and time */
+.time-progress-container {
+  width: 100%; /* Ensure the progress bar takes full width */
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #40444b;
+  border-radius: 2px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background-color: #1db954; /* Spotify green */
+  border-radius: 2px;
+  transition: width 0.5s;
+}
+
+/* Time display */
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #b3b3b3;
+  margin-top: 5px;
+}
+
+.noTrack {
+  color: #1db954;
+  font-weight: 800;
+}
+
