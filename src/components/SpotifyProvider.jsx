@@ -1,13 +1,12 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-// Buat context untuk Spotify
 const SpotifyContext = createContext();
 
 const SpotifyProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState('');
   const [refreshToken] = useState('AQDpNESTK-ZHC53Ma48twshu_GDQxhWpPFrZv5bAUuz6ZOCIQytnfmeYWAgjogt7jplFgFKCHQMl80rxI85zlq3g4ccSAL_YgthpsgoNHaYnZhCUZUj1IuPaGrNviMw7Cs0');
-  const [expiresIn, setExpiresIn] = useState(3600); // Default 1 hour
+  const [expiresIn, setExpiresIn] = useState(3600); 
 
   const updateAccessToken = async () => {
     try {
@@ -31,12 +30,11 @@ const SpotifyProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    updateAccessToken(); // Call once on mount
+    updateAccessToken(); 
 
-    // Set up an interval to refresh token before it expires
     const interval = setInterval(() => {
       updateAccessToken();
-    }, (expiresIn - 60) * 1000); // Refresh 1 minute before expiration
+    }, (expiresIn - 60) * 1000); 
 
     return () => clearInterval(interval);
   }, [refreshToken, expiresIn]);

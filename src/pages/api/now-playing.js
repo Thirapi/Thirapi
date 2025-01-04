@@ -1,7 +1,8 @@
 import axios from 'axios';
+import fs from 'fs'; 
 
 let accessToken = '';
-let expiresIn = 3600; // Default 1 hour
+let expiresIn = 3600; 
 const refreshToken = 'AQDpNESTK-ZHC53Ma48twshu_GDQxhWpPFrZv5bAUuz6ZOCIQytnfmeYWAgjogt7jplFgFKCHQMl80rxI85zlq3g4ccSAL_YgthpsgoNHaYnZhCUZUj1IuPaGrNviMw7Cs0';
 const clientId = '2676f25cf69141128b893bf3098af62a';
 const clientSecret = 'f5bb445b86574b4ea866307a6a345d48';
@@ -50,8 +51,18 @@ const fetchNowPlaying = async () => {
   }
 };
 
+const convertImageToBase64 = async (imageUrl) => {
+  try {
+    const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+    const imageBase64 = Buffer.from(response.data, 'binary').toString('base64');
+    return `data:image/jpeg;base64,${imageBase64}`;
+  } catch (error) {
+    console.error('Error converting image to base64:', error.message);
+    return null;
+  }
+};
+
 export default async function handler(req, res) {
-  // Refresh access token if needed
   if (!accessToken || expiresIn < 60) {
     await updateAccessToken();
   }
@@ -69,20 +80,21 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { track, progress, duration } = nowPlaying;
+  const track = nowPlaying.track;
 
-  const calculateProgress = () => {
-    if (!track || duration === 0) return 0;
-    return (progress / duration) * 100;
-  };
+  const imageUrl = track.album.images[0].url;
 
-  const formatTime = (ms) => {
-    const minutes = Math.floor(ms / 60000);
-    const seconds = ((ms % 60000) / 1000).toFixed(0);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
+  const imageBase64 = await convertImageToBase64(imageUrl);
 
-  // Build the SVG
+  if (!imageBase64) {
+    res.status(200).send(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="400" height="100">
+        <text x="10" y="50" font-size="16" fill="white">Error loading album image</text>
+      </svg>
+    `);
+    return;
+  }
+
   const svgContent = `
     <svg xmlns="http://www.w3.org/2000/svg" width="420" height="240">
       <foreignObject x="10" y="10" width="420" height="240">
@@ -129,13 +141,14 @@ export default async function handler(req, res) {
             align-items: flex-start;
           }
 
-          .track-details h3 {
-            margin: 0;
+          .track-details .track-name {
+            margin: 0 0 5px 0;
+            color: #fff;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 900;
           }
 
-          .track-details p {
+          .track-details .track-artist-album {
             margin: 5px 0;
             font-size: 14px;
             color: #b3b3b3;
@@ -175,15 +188,15 @@ export default async function handler(req, res) {
             height: 30px;
             bottom: 23px;
             position: absolute;
-            margin: -20px 0 0 0px;
+            margin: 20px 0 0 0px;
           }
 
           .bar {
-              width: 3px;                     /* Lebar setiap bar */
-              height: 3px;                    /* Tinggi awal setiap bar */
-              position: absolute;             /* Posisi absolute untuk menempatkan bar */
-              background: #1DB954cc;          /* Warna latar belakang (hijau transparan) */
-              animation: sound 0ms -800ms linear infinite alternate;  /* Animasi */
+              width: 3px;                    
+              height: 3px;                    
+              position: absolute;             
+              background: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+              animation: sound 0ms -800ms linear infinite alternate;  
           }
 
           @keyframes sound {
@@ -281,19 +294,14 @@ export default async function handler(req, res) {
             .bar:nth-child(82) { left: 325px; animation-duration: 1330ms; }
             .bar:nth-child(83) { left: 329px; animation-duration: 1110ms; }
             .bar:nth-child(84) { left: 333px; animation-duration: 1010ms; }
-
-          .noTrack {
-            color: #1db954;
-            font-weight: 800;
-          }
         </style>
         <div xmlns="http://www.w3.org/1999/xhtml" class="now-playing-container">
           <div class="track-info">
-            <img src="${track.album.images[0].url}" alt="${track.name}" class="album-art" />
+            <img src="${imageBase64}" alt="${track.name}" class="album-art" />
             <div class="track-details">
-              <h3>${track.name}</h3>
-              <p>${track.artists.map(artist => artist.name).join(', ')}</p>
-              <p>${track.album.name}</p>
+              <p class="track-name">${track.name}</p>
+              <p class="track-artist-album">${track.artists.map(artist => artist.name).join(', ')}</p>
+              <p class="track-artist-album">${track.album.name}</p>
             </div>
           </div>
           <div class="time-progress-container">

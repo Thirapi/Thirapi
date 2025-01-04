@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { SpotifyContext } from './SpotifyProvider'; // Pastikan SpotifyContext diimpor
+import { SpotifyContext } from './SpotifyProvider'; 
 
 const NowPlaying = (props) => {
   const { accessToken } = useContext(SpotifyContext);
@@ -29,16 +29,15 @@ const NowPlaying = (props) => {
   };
 
   useEffect(() => {
-    fetchNowPlaying(); // Call once on mount
+    fetchNowPlaying(); 
 
     const interval = setInterval(() => {
       fetchNowPlaying();
-    }, 1000); // Update every 1 seconds
+    }, 1000); 
 
     return () => clearInterval(interval);
   }, [accessToken]);
 
-  // Progress Bar Calculation
   const calculateProgress = () => {
     if (!track || duration === 0) return 0;
     return (progress / duration) * 100;
@@ -69,7 +68,6 @@ const NowPlaying = (props) => {
               </a>
             </div>
           </div>
-          {/* Progress Bar and Time Info */}
           <div className="time-progress-container">
             <div className="progress-bar">
               <div className="progress" style={{ width: `${calculateProgress()}%` }}></div>
