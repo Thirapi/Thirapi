@@ -1,5 +1,4 @@
 import axios from 'axios';
-import fs from 'fs'; 
 
 let accessToken = '';
 let expiresIn = 3600; 
@@ -100,8 +99,8 @@ export default async function handler(req, res) {
       <foreignObject x="10" y="10" width="420" height="240">
         <style>
           .now-playing-container {
-            box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.76);
-            background-color: #2e2f34;
+            position: relative;
+            background-color:rgba(46, 47, 52, 0.37);
             border-radius: 10px;
             padding: 0 15px 10px 15px;
             width: 100%;
@@ -112,7 +111,22 @@ export default async function handler(req, res) {
             justify-content: center;
             flex-direction: column;
             margin: 0 auto;
-            margin-bottom: 10px
+            margin-bottom: 10px;
+            overflow: hidden;
+          }
+          .now-playing-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('${imageBase64}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px); 
+            z-index: -1;
           }
 
           .now-playing h4 {
@@ -133,6 +147,19 @@ export default async function handler(req, res) {
             width: 80px;
             border-radius: 8px;
             margin-right: 15px;
+            transition: transform 0.3s ease;
+          }
+
+          .album-art:hover {
+            height: 80px;
+            width: 80px;
+            border-radius: 8px;
+            margin-right: 15px;
+            transform: scale(1.1);
+          }
+
+          a {
+            text-decoration: none;
           }
 
           .track-details {
@@ -144,14 +171,31 @@ export default async function handler(req, res) {
           .track-details .track-name {
             margin: 0 0 5px 0;
             color: #fff;
-            font-size: 16px;
+            font-size: 16px;  
+            font-weight: 900;
+            transition: background-color 0.5s ease, color 0.3s ease;
+          }
+
+          .track-details .track-name:hover {
+            margin: 0 0 5px 0;
+            background-color:rgba(0, 0, 0, 0.25);
+            color: #fff;
+            font-size: 16px;  
             font-weight: 900;
           }
 
           .track-details .track-artist-album {
             margin: 5px 0;
             font-size: 14px;
-            color: #b3b3b3;
+            color:rgb(201, 201, 201);
+            transition: background-color 0.5s ease, color 0.3s ease;
+          }
+
+          .track-details .track-artist-album:hover {
+            margin: 5px 0;
+            background-color:rgba(0, 0, 0, 0.25);
+            font-size: 14px;
+            color:rgb(201, 201, 201);
           }
 
           .time-progress-container {
@@ -297,11 +341,19 @@ export default async function handler(req, res) {
         </style>
         <div xmlns="http://www.w3.org/1999/xhtml" class="now-playing-container">
           <div class="track-info">
-            <img src="${imageBase64}" alt="${track.name}" class="album-art" />
+            <a href="${track.external_urls.spotify}" target="_blank" rel="noopener noreferrer">
+              <img src="${imageBase64}" alt="${track.name}" class="album-art" />
+            </a>
             <div class="track-details">
-              <p class="track-name">${track.name}</p>
-              <p class="track-artist-album">${track.artists.map(artist => artist.name).join(', ')}</p>
-              <p class="track-artist-album">${track.album.name}</p>
+            <a href="${track.external_urls.spotify}" target="_blank" rel="noopener noreferrer">
+              <div class="track-name">${track.name}</div>
+            </a>
+            <a href="${track.artists[0].external_urls.spotify}" target="_blank" rel="noopener noreferrer">
+              <div class="track-artist-album">${track.artists.map(artist => artist.name).join(', ')}</div>
+            </a>
+            <a href="${track.album.external_urls.spotify}" target="_blank" rel="noopener noreferrer">
+              <div class="track-artist-album">${track.album.name}</div>
+            </a>
             </div>
           </div>
           <div class="time-progress-container">
